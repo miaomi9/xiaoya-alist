@@ -8,6 +8,9 @@
 
 ![](https://count.getloli.com/get/@DDS-Derek.xiaoya-alist.readme?theme=rule34)
 
+> [!IMPORTANT]
+> 脚本作者 DDSRem 维护精力有限，脚本更新速度将放缓！
+
 - [main.sh](#mainsh)
   - [使用](#使用)
   - [功能列表](#功能列表)
@@ -73,6 +76,7 @@ bash -c "$(curl --insecure -fsSL https://raw.githubusercontent.com/DDS-Derek/xia
 安装 Resilio-Sync（单独） -> 2 5 1
 安装 Auto_Symlink -> 7 2 1
 安装 CasaOS -> 7 4 1
+安装 小雅元数据定时爬虫 -> 2 9 1
 ——————————————————————————————Emby手动全家桶配置————————————————————————————————————
 单独 下载并解压 全部元数据 -> 2 2 1
 单独 解压 全部元数据 -> 2 2 2
@@ -107,9 +111,10 @@ bash -c "$(curl --insecure -fsSL https://raw.githubusercontent.com/DDS-Derek/xia
 更新 Onelist -> 6 2
 更新 Portainer -> 7 1 2
 更新 Auto_Symlink -> 7 2 2
+更新 小雅元数据定时爬虫 -> 2 9 2
 ———————————————————————————————————————卸载———————————————————————————————————————
 卸载 小雅Alist -> 1 3
-卸载 Emby全家桶 -> 2 9
+卸载 Emby全家桶 -> 2 10
 卸载 卸载Jellyfin全家桶 -> 3 4
 卸载 Resilio-Sync（单独） -> 2 5 3
 卸载 小雅助手（xiaoyahelper）-> 4 3
@@ -118,10 +123,12 @@ bash -c "$(curl --insecure -fsSL https://raw.githubusercontent.com/DDS-Derek/xia
 卸载 Portainer -> 7 1 3
 卸载 Auto_Symlink -> 7 2 3
 卸载 CasaOS -> 7 4 2
+卸载 小雅元数据定时爬虫 -> 2 9 3
 ——————————————————————————————————————系统工具——————————————————————————————————————
 查看系统磁盘挂载 -> 7 3
 ———————————————————————————————————————其他———————————————————————————————————————
 一次性运行 小雅助手（xiaoyahelper）-> 4 2
+创建/删除 定时同步更新数据（小雅alist启动时拉取的数据）-> 1 4
 ```
 
 **高级功能**
@@ -142,11 +149,16 @@ Docker启动容器名称设置 -> 8 1
 
 ## 通用兼容性测试报告
 
-|   设备 \| 架构   | 小雅Alist | 小雅Emby全家桶 | 小雅Jellyfin全家桶 | 小雅助手（xiaoyahelper） | 小雅Alist-TVBox | Onelist |
-| :--------------: | :-------: | :------------: | :----------------: | :----------------------: | :-------------: | :-----: |
-| x86-64 \| amd64  |     ✅     |       ✅        |         ✅          |            ✅             |        ✅        |    ✅    |
-| arm64 \| arm64v8 |     ✅     |       ✅        |         ✅          |            ✅             |        ✅        |    ✅    |
-|  armhf \| armv7  |     ✅     |       ❌        |         ❌          |            ✅             |        ❌        |    ✅    |
+|             软件名称             | x86-64  \| amd64 | arm64 \| arm64v8 | armhf \| armv7 |
+| :------------------------------: | :--------------: | :---------------: | :-------------: |
+|          小雅Alist           |        ✅         |         ✅         |        ✅        |
+|        小雅Emby全家桶        |        ✅         |         ✅         |        ❌        |
+|      小雅Jellyfin全家桶      |        ✅         |         ✅         |        ❌        |
+|   小雅助手（xiaoyahelper）   |        ✅         |         ✅         |        ✅        |
+|       小雅Alist-TVBox        |        ✅         |         ✅         |        ❌        |
+|           Onelist            |        ✅         |         ✅         |        ✅        |
+| 小雅元数据爬虫（xiaoya-emd） |        ✅         |         ✅         |        ✅        |
+| 小雅Cron容器（xiaoya-cron）  |        ✅         |         ✅         |        ✅        |
 
 |    系统名称     | main.sh | emby_config_editor.sh |
 | :-------------: | :-----: | :-------------------: |
@@ -198,13 +210,13 @@ Docker启动容器名称设置 -> 8 1
 - [Alist-TVBox](https://hub.docker.com/r/haroldli/alist-tvbox): 一个基于`AList`和`xiaoya`的`TVBox`管理工具
 - [`strm`文件生成](https://xiaoyaliu.notion.site/strm-2c8d136ceb37445fb6c0222eafb966ce): 小雅官方提供的一键生成`strm`文件脚本
 - [AI老G 脚本推荐](https://b23.tv/3Zo0IvD)
+  - 小雅全家桶安装脚本（支持AI老G版小雅Alist安装，Jellyfin安装，快速Emby安装）:
+    ```shell
+    bash <(curl -sSLf https://xy.ggbond.org/xy/xy_install.sh)
+    ```
   - [玩客云刷casaos小雅emby全家桶](https://b23.tv/KTIHxyT):
     ```shell
     bash <(curl -sSLf https://xy.ggbond.org/xy/wky_xy_emby_ailg.sh)
-    ```
-  - 小雅jellyfin全家桶安装脚本:
-    ```shell
-    bash <(curl -sSLf https://xy.ggbond.org/xy/xyjf_install.sh)
     ```
 
 ## 感谢
